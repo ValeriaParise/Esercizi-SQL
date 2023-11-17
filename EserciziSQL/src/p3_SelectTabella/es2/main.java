@@ -1,24 +1,22 @@
-package p2_Tabelle;
+package p3_SelectTabella.es2;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.util.ArrayList;
 
-
-public class Main {
+public class main {
     public static void main(String[] args) {
-        // Per connetterci al DB
-        try{
-            Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/es2_newdb", "developer",
+        try {
+            Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/es3_newdb", "developer",
                     "dev.1234");
             Statement statement = connection.createStatement();
             ResultSet resultSet = statement.executeQuery("select * from students");
-            while(resultSet.next()){
-                System.out.println(resultSet.getString("last_name") +" " + resultSet.getString("first_name"));
+            while (resultSet.next()) {
+                System.out.println(resultSet.getString("name") + " - " + resultSet.getString("country"));
             }
-        }
-        catch (Exception e ){
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
